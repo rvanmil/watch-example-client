@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { login, countersCollection } from './realm'
 
-import logo from './logo.svg'
 import './App.css'
 
 let interval
