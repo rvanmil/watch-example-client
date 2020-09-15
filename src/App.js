@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     const performStart = async () => {
-      if (!isSending) {
+      if (user && !isSending) {
         setIsSending(true)
 
         // Start watch on uuid
@@ -61,7 +61,7 @@ function App() {
     }
 
     performStart()
-  }, [uuid, isSending, addValueToValues])
+  }, [uuid, user, isSending, addValueToValues])
 
   if (!user) {
     return null
