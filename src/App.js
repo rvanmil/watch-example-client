@@ -27,10 +27,10 @@ class App extends PureComponent {
             values: [{ date: new Date(), counter: event.fullDocument.value }, ...this.state.values]
           })
         }
-        // // Stop at 250 (240 = 2 minutes)
-        // if (this.state.values.length === 250) {
-        //   clearInterval(this.interval)
-        // }
+        // Stop at 300 (240 = 2 minutes)
+        if (this.state.values.length === 300) {
+          clearInterval(this.interval)
+        }
       }
     })
   }
