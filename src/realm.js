@@ -1,14 +1,14 @@
-import { Stitch, RemoteMongoClient, AnonymousCredential } from 'mongodb-stitch-browser-sdk'
+import * as Realm from 'realm-web'
 
-const stitchAppId = 'watch-example-ksaij'
-const stitchDbName = 'db'
+const realmAppId = 'watch-example-mydoj'
+const realmDbName = 'oliver-oe40-development'
 
-// Create the Stitch app (if not already created)
-export const stitchApp = Stitch.hasAppClient(stitchAppId) ? Stitch.getAppClient(stitchAppId) : Stitch.initializeAppClient(stitchAppId)
+// Create the Realm app (if not already created)
+export const realmApp = new Realm.App({ id: realmAppId })
 
-// Initialize Stitch Query Anywhere
-export const mongodb = stitchApp.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas')
-export const countersCollection = mongodb.db(stitchDbName).collection('counters')
+// Initialize Realm Query Anywhere
+export const mongodb = realmApp.services.mongodb('mongodb-atlas')
+export const countersCollection = mongodb.db(realmDbName).collection('watchexamplecounters')
 
 // Login with Auth0
-export const login = () => stitchApp.auth.loginWithCredential(new AnonymousCredential())
+export const login = () => realmApp.logIn(Realm.Credentials.anonymous())
